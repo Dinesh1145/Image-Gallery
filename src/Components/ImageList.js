@@ -26,9 +26,11 @@ const ImageList = () => {
             </div>
             <div className='mb-4'>
                 {(imageData === undefined || imageData.length === 0) ? <h5 className='w-100 mx-auto'>No Images Found</h5> :
-                    <Button variant='dark' onClick={handleLoadMore}>
-                        Load More
-                    </Button>}
+                    (
+                        imageData.length >= 10 &&
+                        <Button variant='dark' onClick={handleLoadMore}>
+                            Load More
+                        </Button>)}
             </div>
         </>
     )

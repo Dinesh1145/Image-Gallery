@@ -1,40 +1,36 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { getImageList } from '../Redux/actions/action'
+import { getImageList, updatePage } from '../Redux/actions/action'
 import SingleProduct from './SingleImage'
 
 const ImageList = () => {
-    let images = useSelector(state => state.imageReducer.imageData)
-    // let globalSearch = useSelector(state => state.imageReducer.data)
-    // console.log(globalSearch)
+    let imageReducer = useSelector(state => state.imageReducer)
+    let { imageData, data } = imageReducer
     let dispatch = useDispatch()
-    const [currentPage, setCurrentPage] = useState(1)
 
-    const handleLoadMore = (e) => {
-        // setCurrentPage(prev => prev + 1);
-        //TODO: page change
+    const handleLoadMore = () => {
+        dispatch(updatePage())
     }
 
     useEffect(() => {
-        dispatch(getImageList({ page: currentPage, search: "" }))
-    }, [currentPage])
+        dispatch(getImageList({ page: data?.page ?? 1, search: data?.search ?? "" }))
+    }, [data])
 
     return (
         <>
             <div className='imageContainer'>
-                {images != undefined && images.length != 0 && images.map((image) => {
+                {imageData != undefined && imageData.length != 0 && imageData.map((image) => {
                     return <SingleProduct key={image?.id} image={image} />
                 })}
             </div>
             <div className='mb-4'>
-                {(images == undefined || images.length == 0) ? <h5 className='w-100 mx-auto'>No Images Found</h5> :
+                {(imageData == undefined || imageData.length == 0) ? <h5 className='w-100 mx-auto'>No Images Found</h5> :
                     <Button variant='dark' onClick={handleLoadMore}>
                         Load More
                     </Button>}
             </div>
         </>
-
     )
 }
 

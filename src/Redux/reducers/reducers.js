@@ -7,11 +7,15 @@ const initialState = {
 export default function imageReducer(state = initialState, action) {
     switch (action.type) {
         case SET_IMAGE_LIST:
-            return { ...state, imageData: [...action.data] }
+            if (state.data.page > 1) {
+                return { ...state, imageData: [...state.imageData, ...action.data] }
+            } else {
+                return { ...state, imageData: [...action.data] }
+            }
         case SET_SEARCH:
-            return { ...state, data: { page: state.data.page, search: action.search } }
+            return { ...state, data: { page: 1, search: action.data } }
         case SET_PAGE:
-            return { ...state, data: { page: action.page, search: state.data.search } }
+            return { ...state, data: { page: state.data.page + 1, search: state.data.search } }
         default:
             return state
     }

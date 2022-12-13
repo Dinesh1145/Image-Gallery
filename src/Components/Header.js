@@ -3,28 +3,22 @@ import { Button, Container, FormControl, Navbar } from 'react-bootstrap';
 import "./style.css"
 import { FaSearch } from "react-icons/fa"
 import { useDispatch, useSelector } from 'react-redux';
-import { getImageList } from '../Redux/actions/action';
+import { updateSearch } from '../Redux/actions/action';
 
 const Header = () => {
-    let { globalSearch } = useSelector(state => state.imageReducer.data)
-    const [search, setSearch] = useState(globalSearch ?? "");
+    let imageReducer = useSelector(state => state.imageReducer)
+    const [search, setSearch] = useState(imageReducer?.data?.search ?? "");
     let dispatch = useDispatch();
 
     const handleChange = (e) => {
         setSearch(e.target.value);
     }
-
     const handleSearch = () => {
-        dispatch(setSearch(search))
+        dispatch(updateSearch(search))
     }
-
-    useEffect(() => {
-        dispatch(getImageList({ page: 1, search: search }))
-    }, [search])
-
     return (
         <Navbar bg="dark" variant="dark" className="header">
-            <Container>
+            <Container className='d-flex flex-wrap'>
                 <Navbar.Brand>
                     <a href="#">Image Gallery</a>
                 </Navbar.Brand>

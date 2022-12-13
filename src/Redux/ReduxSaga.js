@@ -11,7 +11,6 @@ function* getImages(data) {
         res = yield fetch(`https://api.unsplash.com/photos?client_id=${process.env.REACT_APP_UNSPLASH_API_KEY}&page=${page}`);
     }
     res = yield res.json();
-    console.log("action is called", res)
     yield put({ type: SET_IMAGE_LIST, data: search ? res?.results : res })
 }
 

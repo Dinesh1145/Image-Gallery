@@ -1,4 +1,4 @@
-import { GET_IMAGE_LIST, SET_IMAGE_LIST } from '../constants'
+import { GET_IMAGE_LIST, SET_PAGE, SET_SEARCH } from '../constants'
 
 export const getImageList = (data) => {
     return {
@@ -6,10 +6,14 @@ export const getImageList = (data) => {
         data
     }
 }
-
-export const setImageList = (data) => {
+export const updateSearch = (data) => {
     return {
-        type: SET_IMAGE_LIST,
-        data: data
+        type: SET_SEARCH,
+        data
+    }
+}
+export const updatePage = () => {
+    return {
+        type: SET_PAGE
     }
 }

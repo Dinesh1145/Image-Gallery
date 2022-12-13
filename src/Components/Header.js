@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Button, Container, FormControl, Navbar } from 'react-bootstrap';
 import "./style.css"
 import { FaSearch } from "react-icons/fa"
@@ -10,9 +10,21 @@ const Header = () => {
     const [search, setSearch] = useState(imageReducer?.data?.search ?? "");
     let dispatch = useDispatch();
 
-    const handleChange = (e) => {
-        setSearch(e.target.value);
-    }
+    const myDebounce = (cb, delay) => {
+        let timer;
+        return function (...args) {
+            setSearch(args[0].target.value)
+            if (timer) clearTimeout(timer);
+            timer = setTimeout(() => {
+                cb(...args);
+            }, delay);
+        };
+    };
+
+    const handleChange = myDebounce((e) => {
+        dispatch(updateSearch(e.target.value))
+    }, 800);
+
     const handleSearch = () => {
         dispatch(updateSearch(search))
     }

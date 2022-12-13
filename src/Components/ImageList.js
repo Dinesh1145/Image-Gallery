@@ -20,12 +20,12 @@ const ImageList = () => {
     return (
         <>
             <div className='imageContainer'>
-                {imageData != undefined && imageData.length != 0 && imageData.map((image) => {
+                {imageData !== undefined && imageData.length !== 0 && imageData.map((image) => {
                     return <SingleProduct key={image?.id} image={image} />
                 })}
             </div>
             <div className='mb-4'>
-                {(imageData == undefined || imageData.length == 0) ? <h5 className='w-100 mx-auto'>No Images Found</h5> :
+                {(imageData === undefined || imageData.length === 0) ? <h5 className='w-100 mx-auto'>No Images Found</h5> :
                     <Button variant='dark' onClick={handleLoadMore}>
                         Load More
                     </Button>}

@@ -49,10 +49,9 @@ const Header = () => {
                         variant="light"
                         onClick={handleSearch}
                     >
-                        <FaSearch className='mt-0' />
+                        <FaSearch />
                     </Button>
                 </Navbar.Text>
-
             </Container>
         </Navbar>
     )

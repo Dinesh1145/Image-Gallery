@@ -33,13 +33,14 @@ const Header = () => {
                         className="m-auto"
                         aria-label="Search"
                     />
+                    <Button
+                        variant="light"
+                        onClick={handleSearch}
+                    >
+                        <FaSearch className='mt-0' />
+                    </Button>
                 </Navbar.Text>
-                <Button
-                    variant="light"
-                    onClick={handleSearch}
-                >
-                    <FaSearch className='mt-0' />
-                </Button>
+
             </Container>
         </Navbar>
     )

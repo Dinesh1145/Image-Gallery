@@ -12,6 +12,12 @@
     background-color: blanchedalmond;
 }
 
+.search {
+    display: flex;
+    gap: 10px;
+    margin: auto
+}
+
 .header a {
     text-decoration: none !important;
     color: inherit !important;

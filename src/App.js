@@ -1,23 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import ImageList from './Components/ImageList';
+import Header from './Components/Header';
+import { useDispatch } from 'react-redux';
+import { setImageList } from './Redux/actions/action';
+import { useEffect, useState } from 'react';
 
 function App() {
+  // const [searchPage, setSearchPage] = useState({
+  //   page:1,search:""
+  // });
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <ImageList />
     </div>
   );
 }

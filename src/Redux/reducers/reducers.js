@@ -1,21 +1,26 @@
-import { SET_IMAGE_LIST, SET_SEARCH, SET_PAGE } from '../constants'
+import { SET_IMAGE_LIST, SET_SEARCH, SET_PAGE, SET_LOADING } from '../constants'
 
 const initialState = {
     imageData: [],
-    data: { page: 1, search: null }
+    pageSearch: { page: 1, search: "" },
+    isLoading: true,
+    total: 0
+
 }
 export default function imageReducer(state = initialState, action) {
     switch (action.type) {
         case SET_IMAGE_LIST:
-            if (state.data.page > 1) {
-                return { ...state, imageData: [...state.imageData, ...action.data] }
+            if (state.pageSearch.page > 1) {
+                return { ...state, imageData: [...state.imageData, ...action.data], isLoading: false }
             } else {
-                return { ...state, imageData: [...action.data] }
+                return { ...state, imageData: [...action.data], isLoading: false }
             }
         case SET_SEARCH:
-            return { ...state, data: { page: 1, search: action.data } }
+            return { ...state, pageSearch: { page: 1, search: action.data }, isLoading: true }
         case SET_PAGE:
-            return { ...state, data: { page: state.data.page + 1, search: state.data.search } }
+            return { ...state, pageSearch: { page: state.pageSearch.page + 1, search: state.pageSearch.search }, isLoading: true }
+        case SET_LOADING:
+            return { ...state, isLoading: action.data, pageSearch: { page: 1, search: "" } }
         default:
             return state
     }

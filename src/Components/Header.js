@@ -1,19 +1,17 @@
-import React, { useState } from 'react'
+import React, { useRef } from 'react'
 import { Button, Container, FormControl, Navbar } from 'react-bootstrap';
 import "./style.css"
 import { FaSearch } from "react-icons/fa"
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { updateSearch } from '../Redux/actions/action';
 
 const Header = () => {
-    let imageReducer = useSelector(state => state.imageReducer)
-    const [search, setSearch] = useState(imageReducer?.data?.search ?? "");
+    const searchRef = useRef()
     let dispatch = useDispatch();
 
     const myDebounce = (cb, delay) => {
         let timer;
         return function (...args) {
-            setSearch(args[0].target.value)
             if (timer) clearTimeout(timer);
             timer = setTimeout(() => {
                 cb(...args);
@@ -26,7 +24,7 @@ const Header = () => {
     }, 800);
 
     const handleSearch = () => {
-        dispatch(updateSearch(search))
+        dispatch(updateSearch(searchRef.current.value))
     }
     return (
         <Navbar bg="dark" variant="dark" className="header">
@@ -38,8 +36,7 @@ const Header = () => {
                     <FormControl
                         style={{ width: 500 }}
                         type="search"
-                        name="search"
-                        value={search}
+                        ref={searchRef}
                         onChange={handleChange}
                         placeholder="Search For Photos.."
                         className="m-auto"

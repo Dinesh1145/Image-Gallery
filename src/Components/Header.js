@@ -39,7 +39,7 @@ const Header = () => {
                         ref={searchRef}
                         onChange={handleChange}
                         placeholder="Search For Photos.."
-                        className="m-auto"
+                        className="m-auto search_input"
                         aria-label="Search"
                     />
                     <Button

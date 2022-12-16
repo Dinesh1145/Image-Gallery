@@ -15,8 +15,37 @@
 .search {
     display: flex;
     gap: 10px;
-    margin: auto
+    margin: auto;
 }
+
+.search .search_input {
+    width: 500px;
+}
+
+@media (max-width:992px) {
+    .search .search_input {
+        width: 80%;
+        max-width: 500px;
+    }
+}
+
+@media (max-width:768px) {
+    .search .search_input {
+        width: 70%;
+        max-width: 400px;
+    }
+
+}
+
+@media (max-width:468px) {
+
+    .search .search_input {
+        width: 70%;
+        max-width: 280px;
+    }
+
+}
+
 
 .header a {
     text-decoration: none !important;

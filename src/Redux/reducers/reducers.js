@@ -5,7 +5,6 @@ const initialState = {
     pageSearch: { page: 1, search: "" },
     isLoading: true,
     total: 0
-
 }
 export default function imageReducer(state = initialState, action) {
     switch (action.type) {

@@ -1,0 +1,22 @@
+[
+    {
+        "title": "Security",
+        "icon": "shield.svg",
+        "active": true
+    },
+    {
+        "title": "Compliance",
+        "icon": "shieldok.svg",
+        "active": true
+    },
+    {
+        "title": "Operations",
+        "icon": "settings.svg",
+        "active": true
+    },
+    {
+        "title": "Extra config",
+        "icon": "settings.svg",
+        "active": false
+    }
+]

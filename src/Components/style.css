@@ -2,7 +2,9 @@
     box-sizing: border-box;
     margin: 0px;
     padding: 0px;
+    --primary_color: rgb(9, 31, 241)
 }
+
 
 .header {
     position: sticky !important;
@@ -10,6 +12,7 @@
     height: 100px;
     z-index: 101;
     background-color: blanchedalmond;
+    color: var(--primary_color)
 }
 
 .search {
